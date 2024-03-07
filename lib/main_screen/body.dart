@@ -6,7 +6,7 @@ import 'package:ui_plant/main_screen/list_item.dart';
 import 'package:ui_plant/model/plant_model.dart';
 
 class Body extends StatefulWidget {
-  Body({
+  const Body({
     super.key,
   });
 

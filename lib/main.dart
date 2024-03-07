@@ -4,9 +4,16 @@ import 'package:ui_plant/second_screen.dart';
 
 void main() => runApp(const MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+int _currentIndex = 0;
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,7 +38,20 @@ class MyApp extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.brown,
         ),
-        body: Body(),
+        body: const Body(),
+        bottomNavigationBar: BottomNavigationBar(
+          onTap: (value){
+          setState(() {
+            _currentIndex = value;
+          });
+          },
+          currentIndex: _currentIndex,
+          items: [
+             BottomNavigationBarItem(icon: Icon(_currentIndex == 0? Icons.star_purple500_sharp : Icons.star_border_outlined), label: ''),
+             BottomNavigationBarItem(icon: Icon(_currentIndex == 1? Icons.favorite : Icons.favorite_border_outlined), label: ''),
+             BottomNavigationBarItem(icon: Icon(_currentIndex == 2? Icons.person : Icons.person_outline_outlined), label: ''),
+          ], 
+        ),
       ),
     );
   }
